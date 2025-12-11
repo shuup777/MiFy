@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mify - Home{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<!-- Hero -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4">Mify</h1>
+        <p class="lead">Menggunakan Mify, anda dapat membeli lagu favorit anda dengan mudah dan cepat.</p>
+        <p>Temukan artis favorit anda dan nikmati lagu-lagu terbaik mereka.</p>
+        <p class="mt-4 text-center">
+            <a class="btn btn-primary btn-lg d-inline-block" href="{% url 'user:login' %}" role="button">Login</a>
+        </p>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features-section container mt-5">
+    <div class="feature">
+        <h3>Artis Favorimu</h3>
+        <p>Temukan artis dan lagu yang sesuai dengan selera Anda.</p>
+    </div>
+    <div class="feature">
+        <h3>Harga Terjangkau</h3>
+        <p>Harga lagu yang bersahabat untuk semua kalangan.</p>
+    </div>
+    <div class="feature">
+        <h3>Koleksi Lagu Kesukaanmu</h3>
+        <p>Kumpulkan lagu-lagu favoritmu dalam satu tempat.</p>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section text-center mt-5">
+    <div class="container">
+        <h2>Jadilah Artis</h2>
+        <p>Unggah lagumu dan menjadi Artis untuk pendengan setiamu.</p>
+        <a class="btn btn-secondary btn-lg" href="{% url 'user:register' %}">Login sebagai Artis</a>
+    </div>
+</section>
+{% endblock %}

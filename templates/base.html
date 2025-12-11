@@ -1,0 +1,72 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Mify{% endblock %}</title>
+
+  <!-- Bootstrap CSS (place bootstrap.min.css in static/css/) -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Site CSS -->
+    <link href="{% static 'css/site.css' %}" rel="stylesheet">
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">Mify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Intentionally left minimal: only homepage brand on the left -->
+        </ul>
+
+        <ul class="navbar-nav ms-auto">
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'user:profile' %}">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'user:logout' %}">Logout</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'user:login' %}">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-4">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Bootstrap JS bundle (place bootstrap.bundle.min.js in static/js/) -->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Small JS helper: elements with data-href act like links -->
+  <script>
+    document.addEventListener('click', function(e){
+      var el = e.target;
+      // walk up to find element with data-href
+      while(el && el !== document){
+        if(el.dataset && el.dataset.href){
+          window.location.href = el.dataset.href;
+          return;
+        }
+        el = el.parentNode;
+      }
+    });
+  </script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

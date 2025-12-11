@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Artists Dashboard{% endblock %}
+
+{% block content %}
+  <div class="py-4">
+    <h1>Artists Dashboard</h1>
+    <p class="lead">Overview of your artists and songs (placeholder).</p>
+    <a class="btn btn-outline-primary" href="{% url 'artists:dashboard' %}">Refresh</a>
+  </div>
+{% endblock %}

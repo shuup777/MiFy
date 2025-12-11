@@ -1,0 +1,46 @@
+/* Styles for auth pages (login / register) */
+.auth-card {
+  max-width: 560px;
+  margin: 36px auto;
+  padding: 28px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.auth-card h2 {
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.auth-card .form-label {
+  font-weight: 600;
+}
+
+.auth-help {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+@media (max-width: 576px) {
+  .auth-card { padding: 18px; margin: 18px; }
+}
+
+/* When auth pages appear inside the site hero, make the card translucent */
+.auth-hero {
+  padding: 60px 0;
+}
+
+.auth-hero .auth-card {
+  background: rgba(255,255,255,0.92);
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 36px;
+}
+
+.auth-hero .btn-primary {
+  background-color: var(--black-color);
+  border-color: var(--black-color);
+  color: var(--white-color);
+}
+
